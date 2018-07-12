@@ -1,26 +1,9 @@
 package models
 
-import "goAdmin/components"
+func GetUserTable() (table GlobalTable) {
 
-func GetUserTable() (userTable GlobalTable) {
-
-	userTable.Info.FieldList = []FieldStruct{
-		{
-			Head:     "ID",
-			Field:    "id",
-			TypeName: "int",
-			ExcuFun: func(value string) string {
-				return value
-			},
-		},
-		{
-			Head:     "头像",
-			Field:    "avatar",
-			TypeName: "varchar",
-			ExcuFun: func(value string) string {
-				return components.Image.GetContent(value)
-			},
-		},
+	// 列显示配置
+	table.Info.FieldList = []FieldStruct{
 		{
 			Head:     "姓名",
 			Field:    "name",
@@ -43,44 +26,15 @@ func GetUserTable() (userTable GlobalTable) {
 				return "未知"
 			},
 		},
-		{
-			Head:     "省份",
-			Field:    "province",
-			TypeName: "varchar",
-			ExcuFun: func(value string) string {
-				return value
-			},
-		},
-		{
-			Head:     "城市",
-			Field:    "city",
-			TypeName: "varchar",
-			ExcuFun: func(value string) string {
-				return value
-			},
-		},
 	}
 
-	userTable.Info.Table = "users"
-	userTable.Info.Title = "用户表"
-	userTable.Info.Description = "用户表"
+	table.Info.Table = "users"
+	table.Info.Title = "用户表"
+	table.Info.Description = "用户表"
 
-	userTable.Form.FormList = []FormStruct{
+	// 表单显示配置
+	table.Form.FormList = []FormStruct{
 		{
-			Head:     "ID",
-			Field:    "id",
-			TypeName: "int",
-			Default:  "",
-			Editable: false,
-			FormType: "default",
-		}, {
-			Head:     "头像",
-			Field:    "avatar",
-			TypeName: "int64",
-			Default:  "",
-			Editable: true,
-			FormType: "text",
-		}, {
 			Head:     "姓名",
 			Field:    "name",
 			TypeName: "varchar",
@@ -94,26 +48,12 @@ func GetUserTable() (userTable GlobalTable) {
 			Default:  "",
 			Editable: true,
 			FormType: "text",
-		}, {
-			Head:     "省份",
-			Field:    "province",
-			TypeName: "varchar",
-			Default:  "",
-			Editable: true,
-			FormType: "text",
-		}, {
-			Head:     "城市",
-			Field:    "city",
-			TypeName: "varchar",
-			Default:  "",
-			Editable: true,
-			FormType: "text",
 		},
 	}
 
-	userTable.Form.Table = "users"
-	userTable.Form.Title = "用户表"
-	userTable.Form.Description = "用户表"
+	table.Form.Table = "users"
+	table.Form.Title = "用户表"
+	table.Form.Description = "用户表"
 
 	return
 }
